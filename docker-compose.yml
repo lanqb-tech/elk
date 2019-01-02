@@ -56,6 +56,7 @@ services:
       - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
 
   kibana:
+    container_name: kibana
     image: docker.elastic.co/kibana/kibana:6.5.0
     environment:
       ELASTICSEARCH_URL: "http://es01:9200"
@@ -68,6 +69,28 @@ services:
       - ./certs:$CERTS_DIR
     networks:
       - esnet
+    depends_on:
+      - es01
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.5.0
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      XPACK_MANAGEMENT_ELASTICSEARCH_URL: http://es01:9200
+      XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME: "elastic"
+      XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      XPACK_MANAGEMENT_ENABLED: "true"
+      XPACK_MANAGEMENT_PIPELINE_ID: "main"
+      XPACK_MONITORING_ENABLED: "true"
+      XPACK_MONITORING_ELASTICSEARCH_URL: http://es01:9200
+      XPACK_MONITORING_ELASTICSEARCH_USERNAME: "elastic"
+      XPACK_MONITORING_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+#      XPACK_MONITORING_ELASTICSEARCH_SSL_CA: "$CERTS_DIR/ca/ca.crt"
+#      XPACK_MANAGEMENT_ELASTICSEARCH_SSL_CA: "$CERTS_DIR/ca/ca.crt"
+    networks:
+      - esnet
+    volumes:
+      - ./certs:$CERTS_DIR
     depends_on:
       - es01
 
