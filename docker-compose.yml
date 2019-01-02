@@ -5,22 +5,7 @@ services:
   applications:
     image: tianon/true
     volumes:
-      - d:/WWW/Code/soap/management-frontend-lanqb:/var/www/management-frontend-lanqb
-      - d:/WWW/Code/soap/copartner-backend-lanqb:/var/www/copartner-backend-lanqb
-      - d:/WWW/Code/soap/user-management-backend-lanqb:/var/www/user-management-backend-lanqb
-      - d:/WWW/Code/soap/school-backend-lanqb:/var/www/school-backend-lanqb
-      - d:/WWW/Code/soap/resource-management-backend-lanqb:/var/www/resource-management-backend-lanqb
-      - d:/WWW/Code/soap/business-shop-backend-lanqb:/var/www/business-shop-backend-lanqb
-      - d:/WWW/Code/soap/bill-project:/var/www/bill-project
-      - d:/WWW/Code/soap/main-website-frontend-lanqb:/var/www/main-website-frontend-lanqb
-      - d:/WWW/Code/soap/sales-backend-lanqb:/var/www/sales-backend-lanqb
-      - d:/WWW/Code/soap/lanqb-pay-gateway:/var/www/lanqb-pay-gateway
-      - d:/WWW/Code/soap/soap-payment-system-lanqb:/var/www/soap-payment-system-lanqb
-      - d:/WWW/Code/soap/mobile-frontend-lanqb:/var/www/mobile-frontend-lanqb
-      - d:/WWW/Code/soap/earning-backend-lanqb:/var/www/earning-backend-lanqb
-      - d:/WWW/Code/soap/test-cli:/var/www/test-cli
-      - d:/WWW/Code/soap/maestro-api-gateway:/var/www/maestro-api-gateway
-      - d:/WWW/Code/soap/classroom-backend:/var/www/classroom-backend
+      - /Users/bruin/www/test-cli:/var/www/test-cli
 
   es01:
     container_name: es01
@@ -102,7 +87,7 @@ services:
       XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME: "elastic"
       XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
       XPACK_MANAGEMENT_ENABLED: "true"
-      XPACK_MANAGEMENT_PIPELINE_ID: "[main,mobile-frontend-lanqb,resource-management-backend-lanqb]"
+      XPACK_MANAGEMENT_PIPELINE_ID: "[main,php-logs]"
       XPACK_MONITORING_ENABLED: "true"
       XPACK_MONITORING_ELASTICSEARCH_URL: http://es01:9200
       XPACK_MONITORING_ELASTICSEARCH_USERNAME: "elastic"
