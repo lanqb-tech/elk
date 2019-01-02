@@ -17,7 +17,10 @@ services:
       - xpack.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
       - xpack.ssl.certificate=$CERTS_DIR/es01/es01.crt
       - xpack.ssl.key=$CERTS_DIR/es01/es01.key
-    volumes: ['esdata1:/usr/share/elasticsearch/data', './certs:$CERTS_DIR']
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+      - ./certs:$CERTS_DIR
+      - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
     networks:
       - esnet
     ports:
@@ -47,8 +50,10 @@ services:
       - xpack.ssl.key=$CERTS_DIR/es02/es02.key
     networks:
       - esnet
-    volumes: ['esdata2:/usr/share/elasticsearch/data', './certs:$CERTS_DIR']
-
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+      - ./certs:$CERTS_DIR
+      - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.5.0
@@ -66,13 +71,18 @@ services:
     depends_on:
       - es01
 
-
   wait_until_ready:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     command: /usr/bin/true
-    depends_on: {"es01": {"condition": "service_healthy"}}
+    depends_on:
+      es01:
+        condition: "service_healthy"
 
-volumes: {"esdata1": {"driver": "local"}, "esdata2": {"driver": "local"}}
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
 
 networks:
   esnet:
