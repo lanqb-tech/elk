@@ -75,7 +75,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:6.5.0
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
       XPACK_MANAGEMENT_ELASTICSEARCH_URL: http://es01:9200
       XPACK_MANAGEMENT_ELASTICSEARCH_USERNAME: "elastic"
       XPACK_MANAGEMENT_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
