@@ -4,25 +4,11 @@ services:
   applications:
     image: tianon/true
     volumes:
-      - d:/WWW/Code/soap/management-frontend-lanqb:/var/www/management-frontend-lanqb
-      - d:/WWW/Code/soap/copartner-backend-lanqb:/var/www/copartner-backend-lanqb
-      - d:/WWW/Code/soap/user-management-backend-lanqb:/var/www/user-management-backend-lanqb
-      - d:/WWW/Code/soap/school-backend-lanqb:/var/www/school-backend-lanqb
-      - d:/WWW/Code/soap/resource-management-backend-lanqb:/var/www/resource-management-backend-lanqb
-      - d:/WWW/Code/soap/business-shop-backend-lanqb:/var/www/business-shop-backend-lanqb
-      - d:/WWW/Code/soap/bill-project:/var/www/bill-project
-      - d:/WWW/Code/soap/main-website-frontend-lanqb:/var/www/main-website-frontend-lanqb
-      - d:/WWW/Code/soap/sales-backend-lanqb:/var/www/sales-backend-lanqb
-      - d:/WWW/Code/soap/lanqb-pay-gateway:/var/www/lanqb-pay-gateway
-      - d:/WWW/Code/soap/soap-payment-system-lanqb:/var/www/soap-payment-system-lanqb
-      - d:/WWW/Code/soap/mobile-frontend-lanqb:/var/www/mobile-frontend-lanqb
-      - d:/WWW/Code/soap/earning-backend-lanqb:/var/www/earning-backend-lanqb
-      - d:/WWW/Code/soap/test-cli:/var/www/test-cli
-      - d:/WWW/Code/soap/maestro-api-gateway:/var/www/maestro-api-gateway
-      - d:/WWW/Code/soap/classroom-backend:/var/www/classroom-backend
+      - /Users/bruin/www/test-cli:/var/www/test-cli
 
   es01:
     container_name: es01
+    # image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     image: gbruin/elastic:latest
     environment:
       - node.name=es01
@@ -40,7 +26,7 @@ services:
     volumes:
       - esdata1:/usr/share/elasticsearch/data
       - ./certs:$CERTS_DIR
-      - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
+      # - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
     networks:
       - esnet
     ulimits:
@@ -57,6 +43,7 @@ services:
 
   es02:
     container_name: es02
+    # image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     image: gbruin/elastic:latest
     environment:
       - node.name=es02
@@ -81,7 +68,7 @@ services:
     volumes:
       - esdata2:/usr/share/elasticsearch/data
       - ./certs:$CERTS_DIR
-      - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
+      # - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
 
   kibana:
     container_name: kibana
@@ -124,6 +111,7 @@ services:
       - es01
 
   wait_until_ready:
+    # image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     image: gbruin/elastic:latest
     command: /usr/bin/true
     depends_on:
