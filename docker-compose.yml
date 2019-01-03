@@ -43,6 +43,10 @@ services:
       - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
     networks:
       - esnet
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
       - 9200:9200
     healthcheck:
@@ -70,6 +74,10 @@ services:
       - xpack.ssl.key=$CERTS_DIR/es02/es02.key
     networks:
       - esnet
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
       - esdata2:/usr/share/elasticsearch/data
       - ./certs:$CERTS_DIR
