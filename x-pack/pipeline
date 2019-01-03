@@ -3,7 +3,7 @@ input {
         path => "/var/www/resource-management-backend-lanqb/storage/logs/lumen.log"
         start_position => "beginning"
         codec => multiline {
-            pattern => "^\[d"
+            pattern => "^\[\d"
             what => "previous"
             negate => true
         }
