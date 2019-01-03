@@ -26,7 +26,6 @@ services:
     volumes:
       - esdata1:/usr/share/elasticsearch/data
       - ./certs:$CERTS_DIR
-      # - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
     networks:
       - esnet
     ulimits:
@@ -68,7 +67,6 @@ services:
     volumes:
       - esdata2:/usr/share/elasticsearch/data
       - ./certs:$CERTS_DIR
-      # - ./x-pack/x-pack-core-6.5.0.jar:/usr/share/elasticsearch/modules/x-pack-core/x-pack-core-6.5.0.jar
 
   kibana:
     container_name: kibana
