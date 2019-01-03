@@ -1,9 +1,9 @@
 input {
     file {
-        path => "/var/www/test-cli/storage/logs/laravel.log"
+        path => "/var/www/resource-management-backend-lanqb/storage/logs/lumen.log"
         start_position => "beginning"
         codec => multiline {
-            pattern => "^\["
+            pattern => "^\[d"
             what => "previous"
             negate => true
         }
