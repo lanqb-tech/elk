@@ -20,7 +20,7 @@ docker-compose up -f docker-compose.yml  //启动容器
 浏览器打开 http://127.0.0.1:5601，更新license
 elastic/x-pack/yu-xiaolong-d46f3528-2446-4d18-99ea-085fe1e285dd-v5.json
 ```
-![图片](https://github.com/lanqb-tech/elk.git/blob/master/images/WeChat23052aea4eef98f15e470aee438fcaf6.png)
+![图片](https://github.com/lanqb-tech/elk/blob/master/images/WeChat23052aea4eef98f15e470aee438fcaf6.png)
 
 - 最后修改docker-compose.yml
 ```
