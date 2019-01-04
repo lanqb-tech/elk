@@ -29,3 +29,7 @@ docker-compose up -f docker-compose.yml  //启动容器 本地搭建完成
 ```
 
 - 注：本地我的docker配置memory3.5g，swap1.5g，不然内存不够
+
+## 参考文章
+- [加密Elasticsearch Docker Containeredit中的通信](https://www.elastic.co/guide/en/elasticsearch/reference/6.5/configuring-tls-docker.html#configuring-tls-docker)
+- [x-pack破解](https://www.cnblogs.com/qilvfei/p/9956932.html)
